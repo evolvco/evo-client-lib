@@ -42,7 +42,7 @@ export default function Router() {
   return (
     <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path='/' element={<Protected />} >
+        <Route path='*' element={<Protected />} >
           <Route path='*' element={<Home />} />
         </Route>
     </Routes>
@@ -58,12 +58,13 @@ import {LoginForm} from 'evo-client-lib'
 
 export default function Login() {
     const [error, setError] = useState('')
+    const navigate = useNavigate()
     return (<> 
         <h2>Login</h2> 
         {error && <p>{error}</p>}
         <LoginForm 
             onSuccess={(user)=>{
-                useNavigate(`/`)
+                navigate(`/`)
             }}
             onFailure={(e)=>{
                 setError(e.message)
@@ -104,9 +105,8 @@ export default function Home() {
 
 */src/Protected.jsx*
 ```
-import {useState} from 'react'
-import {LoginForm} from 'evo-client-lib'
-import { useNavigate } from "react-router-dom"
+import {RequireAuth} from 'evo-client-lib'
+import { useNavigate, Outlet } from "react-router-dom"
 
 export default function Protected() {
     const navigate = useNavigate()
@@ -114,7 +114,7 @@ export default function Protected() {
     return (<RequireAuth
         onFailure={()=>navigate('/login')}
     >
-        {children}
+        <Outlet />
     </RequireAuth>)
 }
 ```

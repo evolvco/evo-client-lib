@@ -1,6 +1,6 @@
 import {useState, useEffect, useContext, createContext} from 'react'
 import * as auth from './services'
-import {setToken} from './store'
+import {setToken, getRestDomain} from './store'
 
 let AuthContext = createContext()
 
@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
       return user
     }
     try{
-      const token = await auth.refresh()
+      const token = await auth.refresh(getRestDomain()?localStorage.getItem('refresh-token'):'')
       if(!token){
         throw 'no valid refresh token'
       }

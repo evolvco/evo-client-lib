@@ -1,7 +1,7 @@
-import {getAccessToken} from './store'
+import {getAccessToken, getRestDomain} from './store'
 
 export async function login(cred) {
-    const response = await fetch("/api/auth/token", {
+    const response = await fetch(`${getRestDomain()}/api/auth/token`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export async function login(cred) {
 
 export async function getUser(){
 	try{
-		const response = await fetch("/api/auth/user", {
+		const response = await fetch(`${getRestDomain()}/api/auth/user`, {
 	  		method: "GET",
 	  		headers: {
 	    		'Content-Type': 'application/json',
@@ -36,13 +36,14 @@ export async function getUser(){
 	}
 }
 
-export async function refresh(){
+export async function refresh(refresh_token){
 	try{
-		const response = await fetch("/api/auth/refresh", {
+		const response = await fetch(`${getRestDomain()}/api/auth/refresh`, {
 	  		method: "POST",
 	  		headers: {
 	    		"Content-Type": "application/json",
-	  		}
+	  		},
+			body: JSON.stringify({refresh_token})
 		})
 		if (!response.ok) {
 			const json = await response.json();
@@ -58,7 +59,7 @@ export async function refresh(){
 
 export async function release(){
 	try{
-		const response = await fetch("/api/auth/release", {
+		const response = await fetch(`${getRestDomain()}/api/auth/release`, {
 	  		method: "POST",
 	  		headers: {
 	    		"Content-Type": "application/json",
