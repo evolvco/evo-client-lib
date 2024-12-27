@@ -1,13 +1,22 @@
 # EVO SDK
 - simplifies tasks such as authentication and authorization
 
-## Requirements
+## Server Requirements
 - A server somewhere running Evo Server `git@github.com:evolvco/evo-server.git`
+
+## Quick starts
+- There are two Quick start repos 
+- [Javascript Client](https://github.com/evolvco/evo-micro-app)
+- [Typescript Client](https://github.com/evolvco/evo-micro-app-ts)
+
+## integration tutorials
+### Clent Requirements
+- If your are not using a quik start package
 - Either a proxy directing all traffic from your client going to `/api` and `/ws` to the Evo Server, or setting the domain of the lib using `setRestDomain`, and `setSocketDomain`
 - [Proxy example using vite proxy](docs/proxy.md)
 - [Set Domains example](docs/set-domains.md)
 
-## install
+### install
 - clone the lib in the parent folder of your project. from your project root run 
 
 ```
@@ -23,13 +32,13 @@ git clone git@github.com:evolvco/evo-client-lib.git
 
 ```npm i evo-client-lib```
 
-## Authentication
+### Authentication
 - helpers include an AuthProvider and a useAuth hook
 - [React Router Example](docs/react-router-auth.md)
 - [Simple Example without React Router](docs/simple-auth.md)
 
 
-### Components
+## Components
 
 #### RequireAuth
 | Parameter     | Type              | Example   | Options   |
