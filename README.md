@@ -40,6 +40,124 @@ git clone git@github.com:evolvco/evo-client-lib.git
 - [React Router Example](docs/react-router-auth.md)
 - [Simple Example without React Router](docs/simple-auth.md)
 
+## Meta Models
+- meta models are json objects that describe the structure of a model. 
+- They descibe things like field names and types, validators, join relationships, hooks, exe.
+
+### Eample using out of the box react hooks
+```
+import { useState, useEffect } from "react"
+import { fetchMeta } from "evo-client-lib"
+
+export default function Meta() {
+    const [metaModels, setMetaModels] = useState()
+
+    useEffect(()=>{
+        fetchMeta()
+            .then(setMetaModels)
+            .catch(console.error)
+    }, [])
+
+    if(!metaModels){
+        return <p>Loading</p>
+    }
+
+    return (<>
+        <h1>Meta Models</h1>   
+        <ul>
+            {metaModels.map((meta)=>{
+                return <li>
+                    <h4>{meta.name}</h4>
+                    <code><pre>{JSON.stringify(meta,null,2)}</pre></code>
+                </li>
+            })}
+        </ul>
+    </>)
+}
+```
+
+### Example using a custom hook included in the library
+```
+import { useMeta } from "evo-client-lib"
+
+export default function MetaHook() {
+    const {metaModels, loadingMetaModels} = useMeta()
+
+    if(loadingMetaModels){
+        return <p>Loading</p>
+    }
+
+    return (<>
+        <h1>Meta Models via hook</h1>   
+        <ul>
+            {metaModels.map((meta)=>{
+                return <li>{meta.name}</li>
+            })}
+        </ul>
+    </>)
+}
+```
+
+## Model Records
+### Eample using out of the box react hooks
+```
+import { useState, useEffect } from "react"
+import { models } from "evo-client-lib"
+
+export default function ModelRecords() {
+    const [recordSet, setRecordSet] = useState()
+
+    useEffect(()=>{
+        models.find('perm')
+            .then(setRecordSet)
+            .catch(console.error)
+    }, [])
+
+    if(!recordSet){
+        return <p>Loading</p>
+    }
+
+    return (<>
+        <h1>{`${recordSet.count.filtered} Model Records`}</h1>   
+        <ul>
+            {recordSet.records.map((meta)=>{
+                return <li>
+                    <h4>{meta.name}</h4>
+                    <code><pre>{JSON.stringify(meta,null,2)}</pre></code>
+                </li>
+            })}
+        </ul>
+    </>)
+}
+```
+
+### Example using a custom hook included in the library
+```
+import { models } from "evo-client-lib"
+
+export default function ModelRecordsHook() {
+    const [recordSet, loading, setRecords] = models.useModel({
+        model:'perm'
+    })
+
+    if(loading){
+        return <p>Loading</p>
+    }
+
+    return (<>
+        <h1>{`${recordSet.count.filtered} Model Records via hook`}</h1>   
+        <ul>
+            {recordSet.records.map((rec)=>{
+                return <li>{rec.name}</li>
+            })}
+        </ul>
+    </>)
+}
+```
+
+## Web Sockets
+- every meta model can be optionally backed by a web socket
+- [Setup](docs/socket-setup.md)
 
 ## Components
 
