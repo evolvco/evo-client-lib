@@ -42,9 +42,9 @@ export function useModel(params={}) { //{model, query, onError}
   async function createModel(atts){
     try{
       await services.create(params.model, atts)
-      if(!params.preventUpdate){
+      //if(!params.preventUpdate){
         await findModels(params.query)
-      }
+      //}
     }catch(e){
       console.error(e)
       params?.onError(e)

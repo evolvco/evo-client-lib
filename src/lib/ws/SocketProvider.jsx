@@ -4,15 +4,14 @@ import {getAccessToken, getSocketDomain} from '../auth/store'
 let SocketContext = createContext()
 
 export function SocketProvider({ children }) {
-
     const [ws, setWs] = useState(null);
     const [isReady, setIsReady] = useState(false)
 
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        
-        //mount
+      
+      //mount
         const _ws = new WebSocket(`${getSocketDomain()}/ws`);
 
         _ws.addEventListener('open',(ev) => {

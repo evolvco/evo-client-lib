@@ -1,7 +1,7 @@
 {
   "name": "evo-client-lib",
   "private": true,
-  "version": "0.0.9",
+  "version": "0.0.14",
   "type": "module",
   "main": "./dist/evo-client-lib.umd.js",
   "module": "./dist/evo-client-lib.es.js",
