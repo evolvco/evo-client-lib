@@ -5,8 +5,7 @@
 - A server somewhere running Evo Server `git@github.com:evolvco/evo-server.git`
 
 ## Quick starts
-- There are two Quick start repos 
-- [Javascript Client](https://github.com/evolvco/evo-micro-app)
+- There is a Quick start repos 
 - [Typescript Client](https://github.com/evolvco/evo-micro-app-ts)
 - the quick starts are configured to use `evo-client-lib` but do not install it so you have to follow the Install section after you clone one of the quickstart projects
 

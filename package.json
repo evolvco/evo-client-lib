@@ -1,45 +1,78 @@
 {
   "name": "evo-client-lib",
   "private": true,
-  "version": "0.0.14",
+  "version": "0.1.0",
   "type": "module",
-  "main": "./dist/evo-client-lib.umd.js",
-  "module": "./dist/evo-client-lib.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/evo-client-lib.es.js",
-      "require": "./dist/evo-client-lib.umd.js"
-    }
-  },
+  "main": "dist/evo-client-lib.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint src --ext js,jsx",
-    "preview": "vite preview"
+    "test": "vitest",
+    "build": "tsc --p ./tsconfig-build.json && vite build",
+    "lint": "eslint .",
+    "preview": "vite build && vite preview",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1",
-    "ajv-keywords": "^5.1.0",
+    "@codesandbox/sandpack-react": "^2.20.0",
+    "@codesandbox/sandpack-themes": "^2.0.21",
+    "@editorjs/editorjs": "^2.30.8",
+    "@mantine/core": "^7.16.3",
+    "@mantine/hooks": "^7.16.3",
+    "@mdxeditor/editor": "^3.24.0",
+    "@tabler/icons-react": "^3.30.0",
+    "bson-objectid": "^2.0.4",
+    "casual": "^1.6.2",
+    "dexie": "^4.0.11",
+    "dexie-cloud-addon": "^4.0.11",
+    "dexie-react-hooks": "^1.1.7",
+    "openai": "^4.86.1",
+    "pluralize": "^8.0.0",
+    "tiptap-markdown": "^0.8.10",
+    "uuid": "^11.1.0",
+    "ws": "^8.18.1",
+    "y-webrtc": "^10.3.0",
+    "yjs": "^13.6.24",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@faker-js/faker": "^9.5.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.13.4",
+    "@types/pluralize": "^0.0.33",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/testing-library__jest-dom": "^5.14.9",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "fake-indexeddb": "^6.0.0",
+    "globals": "^15.14.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jsdom": "^26.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.5",
+    "vite-plugin-dts": "^4.5.0",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.0.5"
+  },
+  "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
-  "devDependencies": {
-    "@eslint/js": "^9.15.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.15.0",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.14",
-    "globals": "^15.12.0",
-    "vite": "^6.0.1"
-  },
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
-  "author": "",
-  "license": "ISC",
   "directories": {
-    "doc": "docs"
-  }
+    "lib": "lib"
+  },
+  "author": "",
+  "license": "ISC"
 }
