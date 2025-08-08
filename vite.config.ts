@@ -7,7 +7,7 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
   plugins: [
     react(), 
-    dts({ include: ['lib'] })
+    dts()
   ],
   resolve: {
     alias: {
@@ -24,7 +24,9 @@ export default defineConfig({
     copyPublicDir: false,
     lib: {
       entry: path.resolve(__dirname, 'lib/main.ts'),
-      formats: ['es']
+      name: 'evo-client-lib',
+      fileName: (format) => `evo-client-lib.${format}.js`,
+      formats: ['es', 'cjs']
     },
     rollupOptions: {
       // Externalize React and ReactDOM
