@@ -1,22 +1,15 @@
 import { useEffect, useState } from 'react'
-import { useDisclosure,  } from '@mantine/hooks';
 import { 
-  AppShell, 
-  Burger,
-  Flex,
   Loader
 } from '@mantine/core';
-import logo from '@/assets/logo.png'
 import {connect} from './models'
-import { Notify, useNotify } from './ui/Notify';
+import { TriLayout, useNotify } from '@lib/ui';
 import { Simple, TopicNavigation } from './propts';
 import { ModelFactory } from '@lib/models';
 import { ObjectId } from '@lib/models/ModelAdaptor.types';
 import { ChatRoom } from './chat';
 
-function App() {
-  const [onav, { toggle:tnav }] = useDisclosure();
-  const [oaside, { toggle:taside }] = useDisclosure();
+export function App() {
   const [loading, setLoading] = useState(true)
   const [topic, setTopic] = useState<Record<string, any>>({})
 
@@ -55,56 +48,19 @@ function App() {
     return <Loader />
   }
 
-  return (<AppShell
-    header={{ height: 60 }}
-    navbar={{
-      width: 250,
-      breakpoint: 'sm',
-      collapsed: { mobile: !onav, desktop: !onav },
-    }}
-    aside={{
-      width: 250,
-      breakpoint: 'sm',
-      collapsed: { mobile: !oaside, desktop: !oaside },
-    }}
-    padding="md"
-  >
-    <AppShell.Header 
-      p="md" 
-      style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}
-    >
-      <Burger
-        opened={onav}
-        onClick={tnav}
-        size="sm"
-      />
-      <img src={logo} />
-      <Burger
-        opened={oaside}
-        onClick={taside}
-        size="sm"
-      />
-    </AppShell.Header>
-    <AppShell.Navbar >
-      <TopicNavigation loadTopic={loadTopic} />
-    </AppShell.Navbar>
-    <AppShell.Aside p="md">
-      <ChatRoom />
-    </AppShell.Aside>
-      <AppShell.Main>
-      <Notify open={!!n?.message.type} onClose={()=>n?.setMessage({})} title={n?.message.title} type={n?.message.type}>
-        {n?.message.message}
-        </Notify>
-        <Flex direction="row">
-          <Flex direction="column"  style={{flex:1}}>
-            <Simple key={topic.id} topic={topic} />
-          </Flex>
-        </Flex>  
-      </AppShell.Main> 
-    </AppShell>)
-}
+  const leftPanel = <TopicNavigation loadTopic={loadTopic} />
+  const rightPanel = <ChatRoom />
 
-export default App
+  return (<TriLayout 
+    leftPanel={leftPanel} 
+    rightPanel={rightPanel} 
+  >
+    <Simple key={topic.id} topic={topic} />
+  </TriLayout>)
+}
+    
+    
+      
 
 
 

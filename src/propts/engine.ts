@@ -2,10 +2,9 @@ import {
     callFunction, 
     getModelsSpec, 
     getMetaModelSpec,
-    createMetaModelSpec
 } from "@/tools"
 import OpenAI from "openai";
-import { OutputProcess, OutputPlain } from "./shape";
+import { OutputProcess } from "./shape";
 import { zodResponseFormat } from "openai/helpers/zod.mjs";
 import { ChatCompletionCreateParamsNonStreaming } from "openai/resources/chat/completions.mjs";
 import { jsonToMarkdown } from "./jsonToMarkdown";

@@ -28,12 +28,13 @@ export default defineConfig({
     },
     rollupOptions: {
       // Externalize React and ReactDOM
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'react-router-dom'],
       output: {
         // Global variables for externalized dependencies if needed
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          'react-router-dom': 'ReactRouterDOM',
         },
       },
     },

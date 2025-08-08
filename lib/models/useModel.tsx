@@ -59,5 +59,10 @@ export function useModel(params: UseModelParams) {
     }
   }
 
-    return [models, loadingModels, findModels, createModel]
+    return {
+      recordSet:models, 
+      loading:loadingModels, 
+      find:findModels,
+      create:createModel
+    }
 }

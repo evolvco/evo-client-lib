@@ -1,6 +1,4 @@
-import { IconListSearch } from '@tabler/icons-react';
-import cx from 'clsx';
-import { Box, Button, Group, Stack, Text } from '@mantine/core';
+import {  Button, Group, Stack, Text } from '@mantine/core';
 import { Records } from '@lib/models/ModelAdaptor.types';
 import { ModelFactory } from '@lib/models';
 import { useEffect, useState } from 'react';
