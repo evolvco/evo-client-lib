@@ -1,6 +1,6 @@
 {
   "name": "evo-client-lib",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "main": "dist/evo-client-lib.cjs.js",
   "module": "dist/evo-client-lib.es.js",
@@ -12,7 +12,11 @@
   "scripts": {
     "dev": "vite",
     "test": "vitest",
-    "build": "tsc --p ./tsconfig-build.json && vite build && cp lib/types/evo-client-lib.d.ts dist/evo-client-lib.d.ts",
+    "pack": "tsc --p ./tsconfig-build.json  ",
+    "dec": "cp lib/evo-client-lib.d.ts dist/evo-client-lib.d.ts",
+    "types": "cp -r lib/types dist/types",
+    "docs": "cp -r docs dist/docs",
+    "build": "npm run pack && vite build && npm run types && npm run dec && npm run docs",
     "lint": "eslint .",
     "preview": "vite build && vite preview",
     "prepublishOnly": "npm run build"

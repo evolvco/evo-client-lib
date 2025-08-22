@@ -1,7 +1,5 @@
+import { ArrayEditors, BooleanEditors, Crud, ObjectEditors, Pinned, StringEditors, Mixin, Method, TagsDisplay, FieldType, ObjectIdEditors } from './ModelAdaptor.types';
 import { ObjectId } from '../models';
-import { Query } from './query';
-import { Records, AsyncRecord } from './record';
-
 
 export interface Attributes {
     [fieldKey: string]: unknown;
@@ -45,29 +43,6 @@ export interface Meta {
   hooks?: Hooks;
   actions?: Actions;
   schema: Schema;
-}
-
-
-export interface Crud { //todo how do i deem this a class vs module vs object or does it even matter
-  //todo whats the best way to show async/await for below class methods
-  count(query?: Query): Promise<number>;
-  validate(atts:Attributes): Promise<void>;
-  validateCreate(atts:Attributes): Promise<void>;
-  validateUpdate(id:ObjectId, atts:Attributes): Promise<void>;
-  find(query?: Query): Promise<Records>;
-  findOne(query?: Query): AsyncRecord;
-  findById(id: ObjectId): AsyncRecord;
-  create(atts:Attributes): AsyncRecord;
-  createMany(attsList: Array<Attributes>): Promise<Records>;
-  createBulk(attsList: Array<Attributes>): void;
-  update(query: Query, attsList: Attributes): AsyncRecord;
-  updateMany(query: Query, attsList: Attributes): Promise<Records>;
-  updateBulk(query: Query, attsList: Attributes): void;
-  updateById(id: ObjectId, attsList: Attributes): AsyncRecord;
-  remove(query: Query): AsyncRecord;
-  removeById(id: ObjectId): AsyncRecord;
-  removeMany(query: Query): Promise<Records>;
-  removeBulk(query: Query): void;
 }
 
 export interface Hooks {
@@ -169,70 +144,3 @@ export interface Schema {
   [fieldName: string]: Field | Array<Field>;
 }
 
-
-export enum ObjectIdEditors {
-  dropdown="dropdown",
-  grid="grid"
-}
-
-export enum ObjectEditors {
-  "Json Editor"="Json Editor", 
-  "Name/Value ListEditor"="Name/Value ListEditor", 
-  "Tags Editor"="Tags Editor",
-  "multi-select"="multi-select", 
-  "meta-model-dropdown"="meta-model-dropdown"
-}
-
-export enum ArrayEditors {
-  "RolesEditor"="RolesEditor",
-  "Tags Editor"="Tags Editor",
-  "meta-model-dropdown"="meta-model-dropdown", 
-  "multi-select"="multi-select"
-}
-
-export enum StringEditors {
-  "Text Input"="Text Input",
-  "Code Editor"="Code Editor", 
-  "Time"="Time", 
-  "Meta Model Dropdown"="Meta Model Dropdown"
-}
-
-export enum BooleanEditors {
-  "Checkbox"="Checkbox",
-  "Switch"="Switch"
-}
-
-export enum Pinned {
-  left="left",
-  right="right"
-}
-
-export enum FieldType {
-  String="String",
-  Number="Number",
-  Boolean="Boolean",
-  Date="Date",
-  ObjectId="ObjectId",
-  Array="Array",
-  Object="Object"
-}
-
-export enum TagsDisplay {
-  tabs="tabs",
-  collapsible="collapsible",
-  fieldset="fieldset",
-  none=""
-}
-
-export enum Method {
-  GET="GET",
-  POST="POST",
-  PUT="PUT",
-  DELETE="DELETE"
-}
-
-export enum Mixin {
-  user="user",
-  refreshToken="refreshToken",
-  meta="meta"
-}

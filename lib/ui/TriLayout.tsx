@@ -2,7 +2,6 @@ import { useDisclosure, } from '@mantine/hooks';
 import {
     AppShell,
     Burger,
-    Flex,
 } from '@mantine/core';
 import logo from '../assets/logo.png'
 import { Toaster } from './Toaster';

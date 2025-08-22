@@ -1,7 +1,6 @@
 import {DexieModel} from './DexieModel'
 import {DexieMetaModel} from './DexieMetaModel'
-import { Meta, ModelMap, ModelAdaptor, Mixin } from './ModelAdaptor.types'
-import { DataTypes } from './StoreAdapter.types'
+import { Meta, ModelMap, ModelAdaptor } from '../types/models/ModelAdaptor.types'
 import { StoreFactory } from './StoreFactory'
 
 let models: ModelMap = {}
@@ -19,8 +18,8 @@ export async function create(atts: Meta): Promise<ModelAdaptor> {
     const {name, database, mixins} = atts
     const dataStore = atts.dataStore || StoreFactory.getStore(database)
 
-    if(dataStore.dataType===DataTypes.Dexie ){
-        if(mixins && mixins.includes(Mixin.meta)){
+    if(dataStore.dataType==="Dexie" ){
+        if(mixins && mixins.includes("meta")){
             metaModel = new DexieMetaModel(atts)
             await metaModel.load()
             return metaModel

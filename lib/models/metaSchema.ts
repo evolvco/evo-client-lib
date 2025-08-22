@@ -1,46 +1,46 @@
-import { Schema, FieldType } from "./ModelAdaptor.types";
+import { Schema } from "../types/models/ModelAdaptor.types";
 
 export const metaSchema: Schema = {
     name: {
-        type: FieldType.String,
+        type: "String",
         required: true
     },
     plural: {
-        type: FieldType.String
+        type: "String"
     },
     collection: {
-        type: FieldType.String
+        type: "String"
     },
     database: {
-        type: FieldType.String,
+        type: "String",
         required: true
     },
     recordName: {
-        type: FieldType.String
+        type: "String"
     },
     description: {
-        type: FieldType.String
+        type: "String"
     },
     socket_support: {
-        type: FieldType.Boolean
+        type: "Boolean"
     },
     tags: {
-        type: FieldType.Array
+        type: "Array"
     },
     order: {
-        type: FieldType.Array
+        type: "Array"
     },
     mixins: {
-        type: FieldType.Array
+        type: "Array"
     },
     hooks: {
-        type: FieldType.Object
+        type: "Object"
     },
     actions:{
-        type: FieldType.Object
+        type: "Object"
     },
     schema: {
-        type: FieldType.Object,
+        type: "Object",
         required: true
     }
 }

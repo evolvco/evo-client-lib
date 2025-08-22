@@ -1,4 +1,4 @@
-import { DataStore, DataTypes, StoreParams } from "./StoreAdapter.types";
+import { DataStore, DataTypes, StoreParams } from "../types/models/StoreAdapter.types";
 import Dexie from "dexie"
 
 export class DexieStore implements DataStore {
@@ -10,7 +10,7 @@ export class DexieStore implements DataStore {
     constructor(params:StoreParams){
         this.name = params.name
         this.uri = params.uri || params.name
-        this.dataType = DataTypes.Dexie
+        this.dataType = "Dexie"
     }
 
     async connect() {

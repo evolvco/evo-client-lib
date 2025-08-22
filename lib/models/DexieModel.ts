@@ -1,7 +1,7 @@
 import { ModelAdaptorAbstact } from "./ModelAdaptorAbstact"
-import { ObjectId, Attributes, Field, FieldType, AsyncRecord, Records, ModelAdaptor } from "./ModelAdaptor.types"
-import {Query, ManyOptions, SingleOptions} from "./QueryAdaper.types"
-import { Collection, Table } from "dexie"
+import { ObjectId, Attributes, Field, ModelAdaptor } from "../types/models/ModelAdaptor.types"
+import {Query} from "../types/models/QueryAdaper.types"
+import { Table } from "dexie"
 import { meta } from "./ModelFactory"
 import ObjectID from "bson-objectid"
 import {QueryBuilder} from "./DexieQuery"
@@ -24,7 +24,7 @@ export class DexieModel extends ModelAdaptorAbstact {
             let attr = atts.schema[name]
             let att = attr.constructor===Array?attr[0]: attr as Field
             //list
-            if(att.type===FieldType.Array){
+            if(att.type==="Array"){
                 indx.push(`*${name}`)
             }
             //index
@@ -81,7 +81,7 @@ export class DexieModel extends ModelAdaptorAbstact {
             }
             //type
             if(atts[nm]!==undefined){
-                if(att.type===FieldType.Boolean && typeof(atts[nm]) !== 'boolean'){
+                if(att.type==="Boolean" && typeof(atts[nm]) !== 'boolean'){
                     errors.push(`${nm} is of the wrong type`)
                     return
                 }

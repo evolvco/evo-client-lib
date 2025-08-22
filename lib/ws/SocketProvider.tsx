@@ -1,16 +1,7 @@
 import { getSocketDomain } from '../auth/store'
 import React, { useState, useEffect, useContext, createContext, ReactNode } from 'react';
+import { SocketContextType, SocketProviderProps } from '../types/components.types';
 
-interface SocketContextType {
-  ws: WebSocket | null;
-  isReady: boolean;
-  sendMessage: (message: string) => void;
-  messages: any[];
-}
-
-interface SocketProviderProps {
-  children: ReactNode;
-}
 
 const SocketContext = createContext<SocketContextType | undefined>(undefined);
 

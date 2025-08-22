@@ -1,5 +1,5 @@
 import {  Button, Group, Stack, Text } from '@mantine/core';
-import { Records } from '@lib/models/ModelAdaptor.types';
+import { Records } from '@lib/types/models/ModelAdaptor.types';
 import { ModelFactory } from '@lib/models';
 import { useEffect, useState } from 'react';
 

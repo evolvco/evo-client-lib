@@ -1,7 +1,7 @@
-import { Collection, Table } from "dexie";
+import { Collection } from "dexie";
 import { model } from "./ModelFactory";
-import { Attributes, Field, ModelAdaptor, Records, Record } from "./ModelAdaptor.types";
-import { Query, QueryBuilder as QB } from "./QueryAdaper.types";
+import { Attributes, ModelAdaptor, Records, Record } from "../types/models/ModelAdaptor.types";
+import { Query, QueryBuilder as QB } from "../types/models/QueryAdaper.types";
 
 export class QueryBuilder implements QB {
     

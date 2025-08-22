@@ -1,8 +1,8 @@
-import { Meta, ModelAdaptor, ObjectId, AsyncRecord, Records, Mixin, Attributes, Hooks, Actions, Schema, Method, TagsDisplay  } from "./ModelAdaptor.types"
+import { Meta, ModelAdaptor, ObjectId, AsyncRecord, Records, Mixin, Attributes, Hooks, Actions, Schema  } from "../types/models/ModelAdaptor.types"
 import pluralize from 'pluralize'
-import { DataStore } from "./StoreAdapter.types";
+import { DataStore } from "../types/models/StoreAdapter.types";
 import { StoreFactory } from "./StoreFactory";
-import { Query, SingleOptions, ManyOptions } from "./QueryAdaper.types";
+import { Query } from "../types/models/QueryAdaper.types";
 
 function fillHooks(hooks={}):Hooks {
     return {...{
@@ -16,15 +16,15 @@ function fillHooks(hooks={}):Hooks {
 
 //todo deep merge actions
 function fillActions(actions={}):Actions {
-    return {
+    return {...{
       create: {
         order: [],
         tags_order: [],
-        tags_display: TagsDisplay.none,
+        tags_display: "none",
         service: {
           populate: [],
           path: `/api/:collection`,
-          method: Method.POST,
+          method: "POST",
           secure: true
         }
       },
@@ -34,29 +34,29 @@ function fillActions(actions={}):Actions {
         service: {
           populate: [],
           path: `/api/:collection`,
-          method: Method.GET,
+          method: "GET",
           secure: true
         }
       },
       detail: {
         order: [],
         tags_order: [],
-        tags_display: TagsDisplay.none,
+        tags_display: "none",
         service: {
             populate: [],
             path: `/api/:collection/:id`,
-            method: Method.GET,
+            method: "GET",
             secure: true
         }
       },
       update: {
         order: [],
         tags_order: [],
-        tags_display: TagsDisplay.none,
+        tags_display: "none",
         service: {
             populate: [],
             path: `/api/:collection/:id`,
-            method: Method.PUT,
+            method: "PUT",
             secure: true
         }
       },
@@ -64,11 +64,11 @@ function fillActions(actions={}):Actions {
         service: {
           populate: [],
           path: `/api/:collection/:id`,
-          method: Method.DELETE,
+          method: "DELETE",
           secure: true
         }
       }
-    }
+    }, ...actions}
 }
 
 export class ModelAdaptorAbstact implements ModelAdaptor {

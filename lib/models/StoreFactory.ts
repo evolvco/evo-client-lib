@@ -1,4 +1,4 @@
-import { DataStore, StoreFactory as iStoreFactory, StoreMap, StoreParams } from "./StoreAdapter.types"
+import { DataStore, StoreFactory as iStoreFactory, StoreMap } from "../types/models/StoreAdapter.types"
 
 let stores:StoreMap = {}
 

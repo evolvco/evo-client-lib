@@ -4,11 +4,10 @@
   "exclude": ["node_modules", "dist"],
 
   "compilerOptions": {
-    "declaration": true,
-    "outDir": "./dist",
-    "rootDir": "./lib",
-    "sourceMap": true,
-    
+    //"declaration": true,
+    //"emitDeclarationOnly": true,
+    //"outDir": "./dist",
+    //"rootDir": "./lib",
 
     "incremental": true,
     "target": "ES2020",

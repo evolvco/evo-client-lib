@@ -2,7 +2,7 @@ import { Badge, Card, Tabs, Title } from "@mantine/core"
 import { model } from '@lib/models/ModelFactory'
 import {capitalize} from '@lib/utils/string'
 import { useEffect, useState } from "react"
-import { Records } from "@lib/models/ModelAdaptor.types"
+import { Records } from "@lib/types/models/ModelAdaptor.types"
 
 export function ModelView({name}:{name:string}){
     let [activeRec, setActiveRec] = useState<string | null>(null)

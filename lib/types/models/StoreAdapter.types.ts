@@ -22,6 +22,4 @@ export interface DataStore extends StoreParams {
     disconnect(): Promise<void>;
 }
 
-export enum DataTypes {
-    "Dexie" = "dexie"
-}
+export type DataTypes = "Dexie"

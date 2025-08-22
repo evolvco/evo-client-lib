@@ -1,12 +1,9 @@
 import {useState, useEffect} from 'react'
 import {findall} from './services'
 import {useSocket} from '../ws'
+import { ErrorParams } from '../types/components.types'
 
-  interface Params {
-  onError?: (error: any) => void
-}
-
-export function useMeta(params: Params = {}) {
+export function useMeta(params: ErrorParams = {}) {
   const [metaModels, setMetaModels] = useState()
   const [loadingMetaModels, setLoadingMetaModels] = useState(true)
   const {ws} = useSocket()

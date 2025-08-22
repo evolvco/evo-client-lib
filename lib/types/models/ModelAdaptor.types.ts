@@ -153,71 +153,17 @@ export interface ModelMap {
     [modelName: string]: ModelAdaptor;
 }
 
-export enum ObjectIdEditors {
-    dropdown="dropdown",
-    grid="grid"
-}
+export type ObjectIdEditors = "dropdown" | "grid"
+export type ObjectEditors = "Json Editor" | "Name/Value ListEditor" | "Tags Editor" | "multi-select" | "meta-model-dropdown"
+export type ArrayEditors = "Tags Editor" | "meta-model-dropdown" | "multi-select"
+export type StringEditors = "Text Input" | "Code Editor" | "Time" | "Meta Model Dropdown"
+export type BooleanEditors = "Checkbox" | "Switch"
+export type Pinned = "left" | "right"
+export type FieldType = "String" | "Number" | "Boolean" | "Date" | "ObjectId" | "Array" | "Object"
+export type TagsDisplay = "tabs" | "collapsible" | "fieldset" | "" | "none"
+export type Method = "GET" | "POST" | "PUT" | "DELETE"
+export type Mixin = "user" | "refreshToken" | "meta"
 
-export enum ObjectEditors {
-    "Json Editor"="Json Editor", 
-    "Name/Value ListEditor"="Name/Value ListEditor", 
-    "Tags Editor"="Tags Editor",
-    "multi-select"="multi-select", 
-    "meta-model-dropdown"="meta-model-dropdown"
-}
-
-export enum ArrayEditors {
-    "Tags Editor"="Tags Editor",
-    "meta-model-dropdown"="meta-model-dropdown", 
-    "multi-select"="multi-select"
-}
-
-export enum StringEditors {
-    "Text Input"="Text Input",
-    "Code Editor"="Code Editor", 
-    "Time"="Time", 
-    "Meta Model Dropdown"="Meta Model Dropdown"
-}
-
-export enum BooleanEditors {
-    "Checkbox"="Checkbox",
-    "Switch"="Switch"
-}
-
-export enum Pinned {
-    left="left",
-    right="right"
-}
-
-export enum FieldType {
-    String="String",
-    Number="Number",
-    Boolean="Boolean",
-    Date="Date",
-    ObjectId="ObjectId",
-    Array="Array",
-    Object="Object"
-}
-
-export enum TagsDisplay {
-    tabs="tabs",
-    collapsible="collapsible",
-    fieldset="fieldset",
-    none=""
-}
-
-export enum Method {
-    GET="GET",
-    POST="POST",
-    PUT="PUT",
-    DELETE="DELETE"
-}
-
-export enum Mixin {
-    user="user",
-    refreshToken="refreshToken",
-    meta="meta"
-}
 
 export type Records = Array<Record> 
 

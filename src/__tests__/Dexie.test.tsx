@@ -2,7 +2,7 @@ import "fake-indexeddb/auto";
 import { describe, it, expect } from 'vitest';
 import { StoreFactory, DexieStore } from '@lib/models';
 import { create, meta, model} from '@lib/models/ModelFactory';
-import { FieldType, Meta, Mixin, StringEditors} from '@lib/models/ModelAdaptor.types';
+import { Meta} from '@lib/types/models/ModelAdaptor.types';
 import { DexieMetaModel } from '@lib/models/DexieMetaModel';
 import { DexieModel } from '@lib/models/DexieModel';
 import { metaSchema } from "@lib/models/metaSchema";
@@ -11,7 +11,7 @@ let metaDef: Meta = {
     name: 'sys_meta_model',
     collection: 'sys_meta_models',
     database: 'dexie_evo_meta_test',
-    mixins: [Mixin.meta],
+    mixins: ['meta'],
     schema: metaSchema
 }
 
@@ -20,23 +20,23 @@ let playerDef: Meta = {
     database: 'dexie_exp_test',
     schema: {
         name:{
-            type: FieldType.String,
+            type: 'String',
             required: true,
             unique: true,
             _ui_:{
-                editor: StringEditors['Code Editor']
+                editor: 'Code Editor'
             }
         },
         team:{
-            type: FieldType.ObjectId,
+            type: 'ObjectId',
             ref: 'team'
         },
         injured:{
-            type: FieldType.Boolean
+            type: 'Boolean'
         },
         position:{
             index: true,
-            type: FieldType.String,
+            type: 'String',
             enum: ['QB','RB','FB','TE','WR','C','G','T']
         }
     }
@@ -47,20 +47,20 @@ let teamDef: Meta = {
     database: 'dexie_exp_test',
     schema: {
         name:{
-            type: FieldType.String,
+            type: 'String',
             required: true,
             unique: true,
         },
         city:{
-            type: FieldType.String,
+            type: 'String',
             required: true,
             index: true
         },
         offices:{
-            type: FieldType.Array,
+            type: 'Array',
         },
         prospects:[{
-            type: FieldType.ObjectId,
+            type: 'ObjectId',
             ref: 'player',
         }]
     }

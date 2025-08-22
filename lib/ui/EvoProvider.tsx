@@ -14,7 +14,11 @@ const colorSchemeManager = localStorageColorSchemeManager({
     key: 'my-app-color-scheme',
 });
 
-export function EvoProvider({ children }: { children: React.ReactNode }) {
+export type EvoProviderProps = {
+    children: React.ReactNode
+}
+
+export function EvoProvider({ children }: EvoProviderProps) {
     return (
         <MantineProvider 
             theme={theme} 

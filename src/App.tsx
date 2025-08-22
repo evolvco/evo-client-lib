@@ -6,7 +6,7 @@ import {connect} from './models'
 import { TriLayout, useNotify } from '@lib/ui';
 import { Simple, TopicNavigation } from './propts';
 import { ModelFactory } from '@lib/models';
-import { ObjectId } from '@lib/models/ModelAdaptor.types';
+import { ObjectId } from '@lib/types/models/ModelAdaptor.types';
 import { ChatRoom } from './chat';
 
 export function App() {
