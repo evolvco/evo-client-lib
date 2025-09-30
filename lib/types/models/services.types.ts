@@ -12,3 +12,11 @@ export interface AuthCredentials {
     username: string;
     password: string;
 }
+
+export interface FindPageRecordsParams {
+    startRow: number;
+    endRow: number;
+    sortModel?: Array<{colId: string; sort: string}>;
+    filterModel?: Record<string, {type: string; filterType: string; filter: any}>;
+  }
+  

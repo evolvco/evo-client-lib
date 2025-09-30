@@ -8,6 +8,11 @@
     //"emitDeclarationOnly": true,
     //"outDir": "./dist",
     //"rootDir": "./lib",
+    "paths": {
+      "@/*": ["src/*"],
+      "@lib/*": ["lib/*"],
+      "@ui/*": ["lib/*"]
+    },
 
     "incremental": true,
     "target": "ES2020",

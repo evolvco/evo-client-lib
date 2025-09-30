@@ -26,27 +26,6 @@ interface RoleStack {
   perms: string[];
 }
 
-/* export function toRoleStack(roles: any[]): RoleStack {
-  let stack = []
-  let ids = []
-  let perms = []
-
-  function toStack(roles:any){
-    roles.forEach((role:any) => {
-      ids.push(role.id)
-      stack.push(role)
-      perms.push(...role.perms.map((perm:any) => perm.key||perm))
-
-      if(role.children){
-        toStack(role.children)
-      }
-    })
-  }
-  toStack(roles)
-  
-  return {stack, ids, perms}
-}
-*/
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<AuthUser | null | undefined | false>();
   

@@ -1,6 +1,6 @@
+import type {Meta, ModelMap, ModelAdaptor } from '../types'
 import {DexieModel} from './DexieModel'
 import {DexieMetaModel} from './DexieMetaModel'
-import { Meta, ModelMap, ModelAdaptor } from '../types/models/ModelAdaptor.types'
 import { StoreFactory } from './StoreFactory'
 
 let models: ModelMap = {}

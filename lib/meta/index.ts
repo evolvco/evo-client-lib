@@ -1,2 +1,2 @@
-export {findall as fetchMeta} from "./services"
-export {useMeta} from "./useMeta"
+export * from "./services"
+export * from "./MetaProvider"

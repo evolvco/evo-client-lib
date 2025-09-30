@@ -1,7 +1,10 @@
-import { Records } from './record';
-import { ModelAdaptor } from './meta';
+import { ModelRecords, ModelAdaptor, ObjectId } from './ModelAdaptor.types';
 
-export interface Query extends ManyOptions {
+export interface SingleQuery extends SingleOptions {
+    where?: WhereKey | string   
+}
+
+export interface ManyQuery extends ManyOptions {
     where?: WhereKey | string   
 }
 
@@ -22,24 +25,15 @@ export interface WhereKey {
 
 export interface QueryBuilder {
     model:ModelAdaptor;
-    records: Records;
-    query?: Query;
+    records: ModelRecords;
+    query?: ManyQuery;
     cursor: any;
-    parse(q?:Query): Promise<QueryBuilder>;
+    parse(q?:ManyQuery): Promise<QueryBuilder>;
     processWhere(): void;
     processPopulate(): void;
-    toRecords(): Records;    
+    toRecords(): ModelRecords;    
 }
 
 export type WhereClause = Scaler | Scaler[] | WhereKey
 
 export type Scaler = string | number | boolean | ObjectId
-
-
-//custom complex types to be relocated to a lib
-type RegexMatchedString<Pattern extends RegExp> = string & {
-    __regexPattern: Pattern;
-};
-const ObjectIdRegex = /^[0-9a-fA-F]{24}$/; 
-
-export type ObjectId = RegexMatchedString<typeof ObjectIdRegex>;

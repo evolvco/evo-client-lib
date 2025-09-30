@@ -1,8 +1,8 @@
-import { DataStore, StoreFactory as iStoreFactory, StoreMap } from "../types/models/StoreAdapter.types"
+import type { DataStore, StoreFactoryType, StoreMap } from "../types"
 
 let stores:StoreMap = {}
 
-export const StoreFactory:iStoreFactory = {
+export const StoreFactory:StoreFactoryType = {
     async connect(store:DataStore) {
         stores[store.name]=store
         await store.connect()

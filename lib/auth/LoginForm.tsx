@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useAuth} from './AuthProvider'
-
+import type { LoginFormProps } from '../types'
+import { useNavigate } from 'react-router-dom'
 export function LoginForm({
     onSuccess,
     onFailure,
@@ -11,20 +12,11 @@ export function LoginForm({
     headerClass,
     footerClass,
     submitClass
-}: {
-    onSuccess: (user: any) => void,
-    onFailure: (error: any) => void,
-    formClass: string,
-    errorClass: string,
-    labelClass: string,
-    inputClass: string,
-    headerClass: string,
-    footerClass: string,
-    submitClass: string
-}) {
+}: LoginFormProps) {
+
   let [error, setError] = useState()
   let auth = useAuth()
-
+  let navigate = useNavigate()
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
@@ -35,6 +27,9 @@ export function LoginForm({
     try {
         const user = await auth.signin({username, password})
         onSuccess && onSuccess(user)
+        if(!onSuccess){
+            navigate('/')
+        }
     }catch(e: any){
         onFailure && onFailure(e)
         setError(e.message)

@@ -1,4 +1,4 @@
-import { ObjectId, Records, ModelAdaptor } from "./ModelAdaptor.types";
+import { ObjectId, ModelRecords, ModelAdaptor } from "./ModelAdaptor.types";
 
 export interface Query extends ManyOptions {
     where?: WhereKey 
@@ -21,13 +21,13 @@ export interface WhereKey {
 
 export interface QueryBuilder {
     model:ModelAdaptor;
-    records: Records;
+    records: ModelRecords;
     query?: Query;
     cursor: any;
     parse(q?:Query): Promise<QueryBuilder>;
     processWhere(): void;
     processPopulate(): void;
-    toRecords(): Records;    
+    toRecords(): ModelRecords;    
 }
 
 

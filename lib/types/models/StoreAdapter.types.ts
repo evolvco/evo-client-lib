@@ -1,5 +1,5 @@
 
-export interface StoreFactory {
+export interface StoreFactoryType {
     getStore(name:string): DataStore;
     getMap(): StoreMap
     connect(params:StoreParams): Promise<void>;

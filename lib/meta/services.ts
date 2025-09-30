@@ -1,6 +1,6 @@
 import {getAccessToken, getRestDomain} from '../auth/store'
 
-export async function findall(){
+export async function fetchMeta(){
 	try{
 		const response = await fetch(`${getRestDomain()}/api/meta`, {
 	  		method: "GET",

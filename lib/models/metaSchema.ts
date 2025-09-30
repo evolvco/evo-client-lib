@@ -1,4 +1,4 @@
-import { Schema } from "../types/models/ModelAdaptor.types";
+import { Schema } from "../types/models/meta";
 
 export const metaSchema: Schema = {
     name: {

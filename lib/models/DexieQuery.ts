@@ -1,14 +1,13 @@
 import { Collection } from "dexie";
 import { model } from "./ModelFactory";
-import { Attributes, ModelAdaptor, Records, Record } from "../types/models/ModelAdaptor.types";
-import { Query, QueryBuilder as QB } from "../types/models/QueryAdaper.types";
+import type { ModelAdaptor, ModelRecords, ModelRecord, Attributes, ManyQuery, QueryBuilder as QB, WhereKey } from "../types"
 
 export class QueryBuilder implements QB {
     
     model: ModelAdaptor;
     collection!: Collection;
-    records: Records;
-    query!: Query;
+    records: ModelRecords;
+    query!: ManyQuery;
     cursor!: any;
 
     constructor(model:ModelAdaptor)  {
@@ -16,7 +15,7 @@ export class QueryBuilder implements QB {
         this.cursor = model.model
         this.records = []
     }
-    async parse(q?:Query): Promise<QueryBuilder>{
+    async parse(q?:ManyQuery): Promise<QueryBuilder>{
         
         if(!q) {
             this.records = this.cursor.toArray()
@@ -43,7 +42,7 @@ export class QueryBuilder implements QB {
             if(q.limit){
                 recs.length=q.limit
             }
-            this.records = recs as Records  
+            this.records = recs as ModelRecords  
             return this  
         }
 
@@ -56,7 +55,7 @@ export class QueryBuilder implements QB {
         }
 
         recs = await col.toArray()
-        this.records = recs as Records
+        this.records = recs as ModelRecords
 
         if(q?.populate){
             await this.processPopulate()
@@ -71,15 +70,15 @@ export class QueryBuilder implements QB {
                 })
                 return nrec
             })
-            this.records = recs as Records
+            this.records = recs as ModelRecords
         }
         return this
     }
 
     processWhere(): void {
-        let q = this.query.where
+        let q:string | WhereKey | undefined = this.query.where
 
-        if(q?.id && Array.isArray(q.id)){
+        if(q && typeof q === 'object' && 'id' in q && Array.isArray(q.id)){
             this.collection = this.cursor.where('id').anyOf(q.id) 
             return
         }
@@ -117,7 +116,7 @@ export class QueryBuilder implements QB {
             maps[pop.att]={}
             
             let ids:Attributes = {}
-            records.forEach((r:Record)=>{
+            records.forEach((r:ModelRecord)=>{
                 if(Array.isArray(r[pop.att])){
                     let aaa  = r[pop.att] as Array<string>
                     aaa.forEach((re, i)=>{
@@ -157,7 +156,7 @@ export class QueryBuilder implements QB {
         this.records = recs
     }
 
-    toRecords(): Records {
+    toRecords(): ModelRecords {
         return this.records
     }
 }

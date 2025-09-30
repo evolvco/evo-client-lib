@@ -4,6 +4,7 @@ import { AuthProvider } from "../auth";
 import { SocketProvider } from "../ws";
 
 import '@mantine/core/styles.css';
+import '@ui/main.css'
 
 const theme = createTheme({
     fontFamily: 'Open Sans, sans-serif',
@@ -25,6 +26,7 @@ export function EvoProvider({ children }: EvoProviderProps) {
             colorSchemeManager={colorSchemeManager}
             defaultColorScheme="light"
         >
+            <span className="w-1/2 w-1/3 w-1/4 w-3/4 w-2/3 mx-4"></span>
                 <NotifyProvider>
                     <AuthProvider>
                         <SocketProvider>

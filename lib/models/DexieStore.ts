@@ -1,4 +1,4 @@
-import { DataStore, DataTypes, StoreParams } from "../types/models/StoreAdapter.types";
+import type { DataStore, DataTypes, StoreParams } from "../types"
 import Dexie from "dexie"
 
 export class DexieStore implements DataStore {

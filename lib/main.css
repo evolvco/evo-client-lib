@@ -1,0 +1,462 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    --radius: 0.625rem;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    :root {
+        --ev-color-primary-950: rgb(23, 4, 15);
+        --ev-color-primary-900: rgb(37, 7, 26);
+        --ev-color-primary-800: rgb(57, 11, 39);
+        --ev-color-primary-700: rgb(76, 15, 52);
+        --ev-color-primary-600: rgb(95, 19, 65);
+        --ev-color-primary-500: rgb(118, 24, 80);
+        --ev-color-primary-400: rgb(145 71 117);
+        --ev-color-primary-300: rgb(183 110 158);
+        --ev-color-primary-200: rgb(222 150 195);
+        --ev-color-primary-100: rgb(240, 171, 214);
+        --ev-color-primary-50: rgb(246, 208, 231);
+        --ev-color-secondary-500: rgb(117 156 205);
+        --ev-color-secondary-400: rgb(107 160 214);
+        --ev-color-secondary-300: rgb(186 207 232);
+        --ev-color-secondary-200: rgb(216 228 241);
+        --ev-color-accent-500: rgb(86 124 106);
+        --ev-color-accent-400: rgb(113 147 129);
+        --ev-color-accent-300: rgb(148 175 160);
+
+        --ev-color-neutral-50: theme('colors.neutral.50');
+        --ev-color-neutral-100: theme('colors.neutral.100');
+        --ev-color-neutral-200: theme('colors.neutral.200');
+        --ev-color-neutral-300: theme('colors.neutral.300');
+        --ev-color-neutral-400: theme('colors.neutral.400');
+        --ev-color-neutral-500: theme('colors.neutral.500');
+        --ev-color-neutral-600: theme('colors.neutral.600');
+        --ev-color-neutral-700: theme('colors.neutral.700');
+        --ev-color-neutral-800: theme('colors.neutral.800');
+        --ev-color-neutral-900: theme('colors.neutral.900');
+        --ev-color-neutral-950: theme('colors.neutral.950');
+    }
+
+    .dark {
+        --ev-color-neutral-50: theme('colors.neutral.950');
+        --ev-color-neutral-100: theme('colors.neutral.900');
+        --ev-color-neutral-200: theme('colors.neutral.800');
+        --ev-color-neutral-300: theme('colors.neutral.700');
+        --ev-color-neutral-400: theme('colors.neutral.600');
+        --ev-color-neutral-500: theme('colors.neutral.500');
+        --ev-color-neutral-600: theme('colors.neutral.400');
+        --ev-color-neutral-700: theme('colors.neutral.300');
+        --ev-color-neutral-800: theme('colors.neutral.200');
+        --ev-color-neutral-900: theme('colors.neutral.100');
+        --ev-color-neutral-950: theme('colors.neutral.50');
+    }
+
+    h1 {
+        @apply text-2xl font-semibold;
+    }
+
+    h2 {
+        @apply text-xl font-semibold;
+    }
+
+    h3 {
+        @apply text-lg font-semibold;
+    }
+
+    h4 {
+        @apply text-base font-bold;
+    }
+
+    h5 {
+        @apply text-sm font-bold;
+    }
+
+    h6 {
+        @apply text-xs font-bold;
+    }
+
+    sub {
+        font-size: .9rem;
+    }
+
+    .ev-row {
+        @apply flex flex-row;
+    }
+
+    .ev-col {
+        @apply flex flex-col;
+    }
+
+    .ev-center {
+        @apply flex grow items-center justify-center flex-col;
+    }
+
+    .ev-border-dash {
+        @apply rounded border border-dashed border-neutral-400 dark:border-neutral-600;
+    }
+
+    .ev-border {
+        @apply rounded border border-solid border-neutral-300 dark:border-neutral-700;
+    }
+
+    .dark .ev-border-dash,
+    .dark .ev-border {
+        @apply ev-bg-100 border-neutral-700;
+    }
+
+    .ev-float-target {
+        @apply absolute -right-1 -top-1 z-10 text-lg leading-4 ev-bg-primary-50 ev-fg-primary-500 rounded-full border border-solid ev-border-primary-500
+    }
+
+    .ev-badge {
+        @apply rounded-full ev-fg-950 text-sm px-2.5 ev-bg-200 m-0.5
+    }
+
+    .ev-ellipsis {
+        @apply flex w-full text-nowrap text-ellipsis overflow-hidden
+    }
+
+}
+
+@utility ev-fg {
+    color: var(--foreground);
+}
+
+@utility ev-fg-50 {
+    color: var(--ev-color-neutral-50);
+}
+
+@utility ev-fg-100 {
+    color: var(--ev-color-neutral-100);
+}
+
+@utility ev-fg-200 {
+    color: var(--ev-color-neutral-200);
+}
+
+@utility ev-fg-300 {
+    color: var(--ev-color-neutral-300);
+}
+
+@utility ev-fg-400 {
+    color: var(--ev-color-neutral-400);
+}
+
+@utility ev-fg-500 {
+    color: var(--ev-color-neutral-500);
+}
+
+@utility ev-fg-600 {
+    color: var(--ev-color-neutral-600);
+}
+
+@utility ev-fg-700 {
+    color: var(--ev-color-neutral-700);
+}
+
+@utility ev-fg-800 {
+    color: var(--ev-color-neutral-800);
+}
+
+@utility ev-fg-900 {
+    color: var(--ev-color-neutral-900);
+}
+
+@utility ev-fg-950 {
+    color: var(--ev-color-neutral-950);
+}
+
+@utility ev-bg {
+    background-color: var(--background);
+}
+
+@utility ev-bg-50 {
+    background-color: var(--ev-color-neutral-50);
+}
+
+@utility ev-bg-100 {
+    background-color: var(--ev-color-neutral-100);
+}
+
+@utility ev-bg-200 {
+    background-color: var(--ev-color-neutral-200);
+}
+
+@utility ev-bg-300 {
+    background-color: var(--ev-color-neutral-300);
+}
+
+@utility ev-bg-400 {
+    background-color: var(--ev-color-neutral-400);
+}
+
+@utility ev-bg-500 {
+    background-color: var(--ev-color-neutral-500);
+}
+
+@utility ev-bg-600 {
+    background-color: var(--ev-color-neutral-600);
+}
+
+@utility ev-bg-700 {
+    background-color: var(--ev-color-neutral-700);
+}
+
+@utility ev-bg-800 {
+    background-color: var(--ev-color-neutral-800);
+}
+
+@utility ev-bg-900 {
+    background-color: var(--ev-color-neutral-900);
+}
+
+@utility ev-bg-950 {
+    background-color: var(--ev-color-neutral-950);
+}
+
+@utility ev-fg-primary-50 {
+    background-color: var(--ev-color-primary-50)
+}
+
+@utility ev-fg-primary-100 {
+    color: var(--ev-color-primary-100)
+}
+
+@utility ev-fg-primary-200 {
+    color: var(--ev-color-primary-200)
+}
+
+@utility ev-fg-primary-300 {
+    color: var(--ev-color-primary-300)
+}
+
+@utility ev-fg-primary-400 {
+    color: var(--ev-color-primary-400)
+}
+
+@utility ev-fg-primary-500 {
+    color: var(--ev-color-primary-500)
+}
+
+@utility ev-fg-primary-600 {
+    color: var(--ev-color-primary-600)
+}
+
+@utility ev-fg-primary-700 {
+    color: var(--ev-color-primary-700)
+}
+
+@utility ev-fg-primary-800 {
+    color: var(--ev-color-primary-800)
+}
+
+@utility ev-fg-primary-900 {
+    color: var(--ev-color-primary-900)
+}
+
+@utility ev-fg-primary-950 {
+    color: var(--ev-color-primary-950)
+}
+
+@utility ev-bg-primary-50 {
+    background-color: var(--ev-color-primary-50)
+}
+
+@utility ev-bg-primary-100 {
+    background-color: var(--ev-color-primary-100)
+}
+
+@utility ev-bg-primary-200 {
+    background-color: var(--ev-color-primary-200)
+}
+
+@utility ev-bg-primary-300 {
+    background-color: var(--ev-color-primary-300)
+}
+
+@utility ev-bg-primary-400 {
+    background-color: var(--ev-color-primary-400)
+}
+
+@utility ev-bg-primary-500 {
+    background-color: var(--ev-color-primary-500)
+}
+
+@utility ev-bg-primary-600 {
+    background-color: var(--ev-color-primary-600)
+}
+
+@utility ev-bg-primary-700 {
+    background-color: var(--ev-color-primary-700)
+}
+
+@utility ev-bg-primary-800 {
+    background-color: var(--ev-color-primary-800)
+}
+
+@utility ev-bg-primary-900 {
+    background-color: var(--ev-color-primary-900)
+}
+
+@utility ev-bg-primary-950 {
+    background-color: var(--ev-color-primary-950)
+}
+
+@utility ev-border-primary-50 {
+    border-color: var(--ev-color-primary-50)
+}
+
+@utility ev-border-primary-100 {
+    border-color: var(--ev-color-primary-100)
+}
+
+@utility ev-border-primary-200 {
+    border-color: var(--ev-color-primary-200)
+}
+
+@utility ev-border-primary-300 {
+    border-color: var(--ev-color-primary-300)
+}
+
+@utility ev-border-primary-400 {
+    border-color: var(--ev-color-primary-400)
+}
+
+@utility ev-border-primary-500 {
+    border-color: var(--ev-color-primary-500)
+}
+
+@utility ev-border-primary-600 {
+    border-color: var(--ev-color-primary-600)
+}
+
+@utility ev-border-primary-700 {
+    border-color: var(--ev-color-primary-700)
+}
+
+@utility ev-border-primary-800 {
+    border-color: var(--ev-color-primary-800)
+}
+
+@utility ev-border-primary-900 {
+    border-color: var(--ev-color-primary-900)
+}
+
+@utility ev-border-primary-950 {
+    border-color: var(--ev-color-primary-950)
+}   

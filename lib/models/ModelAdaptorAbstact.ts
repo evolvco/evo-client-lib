@@ -1,26 +1,26 @@
-import { Meta, ModelAdaptor, ObjectId, AsyncRecord, Records, Mixin, Attributes, Hooks, Actions, Schema  } from "../types/models/ModelAdaptor.types"
+import type { Meta, Attributes, ModelAdaptor, ObjectId, AsyncModelRecord, ModelRecords, Mixin, DataStore, Hooks, Actions, Schema, SingleQuery, ManyQuery } from "../types"
 import pluralize from 'pluralize'
-import { DataStore } from "../types/models/StoreAdapter.types";
 import { StoreFactory } from "./StoreFactory";
-import { Query } from "../types/models/QueryAdaper.types";
 
-function fillHooks(hooks={}):Hooks {
-    return {...{
-        'pre_save': '',
-        'post_save': '',
-        'pre_remove': '',
-        'post_remove': '',
-        'read_vo': ''
+function fillHooks(hooks: Hooks = {}): Hooks {
+    return {
+        ...{
+            'pre_save': '',
+            'post_save': '',
+            'pre_remove': '',
+            'post_remove': '',
+            'read_vo': ''
     }, ...hooks}
 }
 
 //todo deep merge actions
-function fillActions(actions={}):Actions {
+function fillActions(actions: any = {}): Actions {
     return {...{
       create: {
         order: [],
         tags_order: [],
         tags_display: "none",
+        notify: {},
         service: {
           populate: [],
           path: `/api/:collection`,
@@ -31,6 +31,7 @@ function fillActions(actions={}):Actions {
       collection: {
         order: [],
         tags_order: [],
+        notify: {},
         service: {
           populate: [],
           path: `/api/:collection`,
@@ -42,6 +43,7 @@ function fillActions(actions={}):Actions {
         order: [],
         tags_order: [],
         tags_display: "none",
+        notify: {},
         service: {
             populate: [],
             path: `/api/:collection/:id`,
@@ -53,6 +55,7 @@ function fillActions(actions={}):Actions {
         order: [],
         tags_order: [],
         tags_display: "none",
+        notify: {},
         service: {
             populate: [],
             path: `/api/:collection/:id`,
@@ -61,6 +64,7 @@ function fillActions(actions={}):Actions {
         }
       },
       remove: {
+        notify: {},
         service: {
           populate: [],
           path: `/api/:collection/:id`,
@@ -145,33 +149,33 @@ export class ModelAdaptorAbstact implements ModelAdaptor {
         }
     }
  
-    count(q?:Query) {
+    count(q?:ManyQuery) {
         console.warn('you should impliment this')
         return Promise.resolve(0)
     }
     
-    find(q?:Query): Promise<Records>{
+    find(q?:ManyQuery): Promise<ModelRecords>{
         console.warn('you should impliment this')
         return Promise.resolve([])
     }
 
-    findOne(q?:Query): AsyncRecord{
+    findOne(q?:SingleQuery): AsyncModelRecord{
         console.warn('you should impliment this')
         return Promise.resolve(undefined)
     }
 
-    findById(id: ObjectId): AsyncRecord{
+    findById(id: ObjectId): AsyncModelRecord{
         console.warn('you should impliment this')
         return Promise.resolve(undefined)
     }
 
-    create(atts:object): AsyncRecord{
+    create(atts:object): AsyncModelRecord{
         console.warn('you should impliment this')
         return Promise.resolve(undefined)
     }
 
-    async createMany(attsList: Array<object>): Promise<Records>{
-        let res:Records = []
+    async createMany(attsList: Array<object>): Promise<ModelRecords>{
+        let res:ModelRecords = []
         const fns = attsList.map(async (atts)=>{
             let rec = await this.create(atts)
             if(rec) res.push(rec)
@@ -184,14 +188,14 @@ export class ModelAdaptorAbstact implements ModelAdaptor {
         console.warn('you should impliment this')
     }
 
-    update(q: Query, atts: object){
+    update(q: SingleQuery, atts: object){
         console.warn('you should impliment this')
         return Promise.resolve(undefined)
     }
 
-    async updateMany(q: Query, atts: object): Promise<Records>{
-        const recs:Records = await this.find(q)
-        let res:Records = []
+    async updateMany(q: ManyQuery, atts: object): Promise<ModelRecords>{
+        const recs:ModelRecords = await this.find(q)
+        let res:ModelRecords = []
         const fns = recs.map(async ({id})=>{
             let rec = await this.updateById(id, atts)
             if(rec) res.push(rec)
@@ -200,7 +204,7 @@ export class ModelAdaptorAbstact implements ModelAdaptor {
         return res
     }
 
-    updateBulk(q: Query, atts:object){
+    updateBulk(q: ManyQuery, atts:object){
         console.warn('you should impliment this')
     }
 
@@ -209,14 +213,14 @@ export class ModelAdaptorAbstact implements ModelAdaptor {
         return Promise.resolve(undefined)
     }
 
-    remove(q:Query):AsyncRecord{
+    remove(q:SingleQuery):AsyncModelRecord{
         console.warn('you should impliment this')
         return Promise.resolve(undefined)
     }
 
-    async removeMany(q:Query): Promise<Records>{
+    async removeMany(q:ManyQuery): Promise<ModelRecords>{
         const recs = await this.find(q)
-        let res:Records = []
+        let res:ModelRecords = []
         const fns = recs.map(async ({id})=>{
             let rec = await this.removeById(id)
             if(rec) res.push(rec)
@@ -225,12 +229,12 @@ export class ModelAdaptorAbstact implements ModelAdaptor {
         return res
     }
 
-    removeById(id:ObjectId):AsyncRecord{
+    removeById(id:ObjectId):AsyncModelRecord{
         console.warn('you should impliment this')
         return Promise.resolve(undefined)
     }
 
-    removeBulk(q:Query){
+    removeBulk(q:ManyQuery){
         console.warn('you should impliment this')
     }
 

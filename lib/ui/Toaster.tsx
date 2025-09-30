@@ -1,3 +1,7 @@
+export { Toaster, toast, type ToasterProps} from "sonner"
+
+
+/*
 import { Notify, useNotify } from "./Notify"
 
 export function Toaster() {
@@ -7,3 +11,4 @@ export function Toaster() {
         {n?.message.message}
     </Notify>
 }
+*/

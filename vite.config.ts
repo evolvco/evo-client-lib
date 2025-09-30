@@ -1,18 +1,36 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import path from 'path'
 import dts from 'vite-plugin-dts'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(), 
-    dts()
+    tailwindcss(),
+    dts(),
+    viteStaticCopy({
+      targets: [{
+          src: 'docs',
+          dest: ''
+        },{
+          src: 'lib/types',
+          dest: ''
+        },
+        {
+          src: 'lib/evo-client-lib.d.ts',
+          dest: ''
+        }
+      ]
+    })
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@lib': path.resolve(__dirname, './lib')
+      '@lib': path.resolve(__dirname, './lib'),
+      '@ui': path.resolve(__dirname, './lib'),
     },
   },
   test: {
@@ -27,6 +45,8 @@ export default defineConfig({
       name: 'evo-client-lib',
       fileName: (format) => `evo-client-lib.${format}.js`,
       formats: ['es', 'cjs']
+    },
+    watch: {
     },
     rollupOptions: {
       // Externalize React and ReactDOM

@@ -1,6 +1,5 @@
 import { ModelAdaptorAbstact } from "./ModelAdaptorAbstact"
-import { ObjectId, Attributes, Field, ModelAdaptor } from "../types/models/ModelAdaptor.types"
-import {Query} from "../types/models/QueryAdaper.types"
+import type { ObjectId ,ModelAdaptor, Attributes, Field, ManyQuery, SingleQuery} from "../types"
 import { Table } from "dexie"
 import { meta } from "./ModelFactory"
 import ObjectID from "bson-objectid"
@@ -47,18 +46,18 @@ export class DexieModel extends ModelAdaptorAbstact {
         this.model=db.table(this.collection) 
     }
  
-    count(q?:Query) {
+    count(q?:ManyQuery) {
         console.warn('you should impliment this')
         return Promise.resolve(0)
     }
     
-    async find(q?:Query) {
+    async find(q?:ManyQuery) {
         let query:QueryBuilder = new QueryBuilder(this as ModelAdaptor)
         await query.parse(q)
         return query.toRecords()
     }
 
-    async findOne(q?:Query){
+    async findOne(q?:SingleQuery){
         let recs = await this.find(q)
         if(recs.length>0){
             return recs[0]
@@ -113,14 +112,14 @@ export class DexieModel extends ModelAdaptorAbstact {
         console.warn('you should impliment this')
     }
 
-    async update(q: Query, atts: Attributes){
+    async update(q: SingleQuery, atts: Attributes){
         let res = await this.findOne(q)
         if(res?.id){
             return this.updateById(res.id, atts)
         }
     }
 
-    updateBulk(q: Query, atts:Attributes){
+    updateBulk(q: ManyQuery, atts:Attributes){
         console.warn('you should impliment this')
     }
 
@@ -136,7 +135,7 @@ export class DexieModel extends ModelAdaptorAbstact {
         }
     }
 
-    async remove(q:Query){
+    async remove(q:SingleQuery){
         let rec = await this.findOne(q)
         console.log(999,rec)
         if(rec){
@@ -149,7 +148,7 @@ export class DexieModel extends ModelAdaptorAbstact {
         return this.remove({where:{id}})
     }
 
-    removeBulk(q:Query){
+    removeBulk(q:ManyQuery){
         console.warn('you should impliment this')
     }
 

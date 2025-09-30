@@ -4,7 +4,7 @@ let _socketDomain: string = ''
 
 export function getAccessToken() {
 	return _token && _token.access_token
-    }
+}
 
 export function setToken(token: any) {
 	_token = token

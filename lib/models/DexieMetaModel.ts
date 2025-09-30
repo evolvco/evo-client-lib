@@ -1,6 +1,6 @@
 import ObjectID from "bson-objectid";
 import { DexieModel } from "./DexieModel"
-import { Attributes } from "../types/models/ModelAdaptor.types";
+import type { Attributes } from "../types";
 
 export class DexieMetaModel extends DexieModel {
     
