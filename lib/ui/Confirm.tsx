@@ -32,14 +32,14 @@ export function Confirm({
         <h3 className="text-center">{title}</h3>
         <p className="text-center">{content}</p>
         {confirm.onConfirm ? (
-          <ButtonGroup>
+          <div className='flex gap-2'>
             {typeof onCancel === 'function' ? (
               <Button onClick={confirm.onCancel}>{cancelText}</Button>
             ) : null}
             <Button onClick={confirm.onConfirm} variant="primary">
               {confirmText}
             </Button>
-          </ButtonGroup>
+          </div>
         ) : null}
       </Dialog>
       <div

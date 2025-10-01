@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button as ButtonUI } from '@lib/components';
+import { Button as _Button } from '@lib/components';
 import { dispatch as _dispatch } from '@lib/bus';
 import { Confirm } from './Confirm';
 import { ButtonProps } from '@lib/types';
@@ -48,4 +48,21 @@ export function Button({
     );
   }
   return <ButtonUI {...{ ...(props as any), onClick }}>{children}</ButtonUI>;
+}
+
+function ButtonUI({
+  children,
+  variant = 'default',
+  ...props
+}: ButtonProps) {
+
+  let _variant = variant;
+  if(variant === 'primary') {
+    _variant = 'default';
+  }
+  if(variant === 'danger') {
+    _variant = 'destructive';
+  }
+  console.log(3333, _variant);
+  return <_Button {...(props as any)} variant={_variant}>{children}</_Button>;
 }

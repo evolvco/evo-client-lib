@@ -26,6 +26,7 @@ interface SelectProps extends FormFieldBaseProps {
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   onClear?: () => void;
+  required?: boolean;
 }
 
 export function Select({
@@ -42,6 +43,7 @@ export function Select({
   clearable,
   disabled,
   onClear,
+  required,
 }: SelectProps) {
   let _onClear = (): void => {
     onChange?.('');
@@ -54,7 +56,7 @@ export function Select({
         <BookOpen className="w-4 h-4 text-muted-foreground" />
       </Tooltip>}</Label>}
       <div style={style} className={`${className} relative`}>
-        <_Select value={value} onValueChange={(value) => {
+        <_Select value={value} required={required} onValueChange={(value) => {
           onChange?.(value)
         }} disabled={disabled}>
           {clearable && (

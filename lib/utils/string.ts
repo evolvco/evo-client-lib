@@ -8,7 +8,7 @@ export const toUnderscoreCase = (str:string) => {
 }
 
 export const toCamelCase = (str:string) => {
-  return str.replace(/-/g, ' ').split(' ').map((s,i)=>(s.charAt(0)[i===0?'toLowerCase':'toUpperCase']() + s.slice(1))).join('')
+  return str.replace(/-/g, ' ').replace(/_/g, ' ').split(' ').map((s,i)=>(s.charAt(0)[i===0?'toLowerCase':'toUpperCase']() + s.slice(1))).join('')
 }
 
 export const toSpaceCase = (str:string) => {

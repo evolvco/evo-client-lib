@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 import { Attributes, ManyQuery, Meta, ModelRecord, RecordSet } from "./models";
 import { NavItemType, ResizablePanelGroup } from "@lib/ui";
 import { ResizablePanel } from "@lib/ui/Resizable";
@@ -242,8 +242,16 @@ export interface ButtonProps {
     dispatch?: string;
     confirm?: string;
     onClick?: (...args: any[]) => void;
+    variant?: "primary" | "default" | "danger" | "destructive" | "outline" | "secondary" | "ghost" | "link";
     [key: string]: any;
 }
+
+export interface ButtonGroupProps {
+    className?: string;
+    style?: React.CSSProperties;
+    orientation?: 'horizontal' | 'vertical';
+    children: ReactElement<ButtonProps>[];
+  }
 
 export interface TriPanelProps {
     children?: React.ReactNode;

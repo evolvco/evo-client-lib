@@ -61,43 +61,22 @@ export interface NotifySchema {
 }
 
 export interface Actions {
-  create: {
-    order: Array<string>;
-    tags_display: TagsDisplay;
-    tags_order: Array<string>;
-    populate: Array<string>;
-    service: Service;
-    notify: NotifySchema;
-  }
-  collection: {
-    order: Array<string>;
-    tags_order: Array<string>;
-    populate: Array<string>;
-    service: Service;
-    notify: NotifySchema;
-  }
-  update: {
-    order: Array<string>;
-    tags_order: Array<string>;
-    tags_display: TagsDisplay;
-    populate: Array<string>;
-    service: Service;
-    notify: NotifySchema;
-  }
-  detail: {
-    order: Array<string>;
-    tags_order: Array<string>;
-    tags_display: TagsDisplay;
-    populate: Array<string>;
-    service: Service;
-    notify: NotifySchema;
-  }
-  remove: {
-    [key: string]: any
-    service: Service;
-    notify: NotifySchema;
-  }
+  create: Action;
+  collection: Action;
+  update: Action;
+  detail: Action;
+  remove: Action;
 }
+
+export interface Action {
+  order: Array<string>;
+  tags_order: Array<string>;
+  tags_display: TagsDisplay;
+  populate: Array<string>;
+  service: Service;
+  notify: NotifySchema;
+  sort?: Array<string>;
+} 
 
 export interface Field {
   type: FieldType;

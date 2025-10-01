@@ -38,7 +38,9 @@ export function MetaProvider({ children }: MetaProviderProps) {
     loadMetaModels,
     loadingMetaModels,
   };
-
+  if(!metaModels.length) {
+    return false
+  }
   return <MetaContext.Provider value={value}>{children}</MetaContext.Provider>;
 }
 

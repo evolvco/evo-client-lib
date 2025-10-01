@@ -7,6 +7,7 @@ interface InputProps extends FormFieldBaseProps {
   value?: string;
   clearable?: boolean;
   search?: boolean;
+  required?: boolean;
   autocomplete?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onClear?: () => void;
@@ -23,9 +24,11 @@ export function Input({
   autocomplete,
   onChange,
   onClear,
+  required,
 }: InputProps) {
   let input = (
     <InputUI
+      required={required}
       style={style}
       value={value}
       autoComplete={autocomplete}

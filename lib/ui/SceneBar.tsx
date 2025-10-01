@@ -41,9 +41,9 @@ export function SceneBar({
           </button>
         )}
         <div className='mx-2'>
-          <ButtonGroup >
+          <div className='flex gap-2'>
             {leftPanelActions}
-          </ButtonGroup>
+          </div>
         </div>
       </div>
       <div className='flex items-center flex-grow'>
@@ -51,9 +51,9 @@ export function SceneBar({
       </div>
       <div className='flex items-center'>
         <div className='mx-2'>
-          <ButtonGroup >
+          <div className='flex gap-2'>
             {rightPanelActions}
-          </ButtonGroup>
+          </div>
         </div>
         {rightPanelOpen !== undefined && !rightPanelOpen && (
           <button 

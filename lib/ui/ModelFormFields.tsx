@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { FieldsEditor } from './FieldsEditor';
 import { useMeta } from '../meta';
 import { FormContext } from './ModelForm';
+import { ModelFormFieldsProps } from '@lib/types';
 
 export function ModelFormFields({
   className,
