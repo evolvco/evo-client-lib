@@ -1,5 +1,5 @@
 import { useState, useContext, createContext } from 'react'
-import { Alert } from '@mantine/core';
+import { Alert } from '@lib/components'
 import { IconInfoCircle } from '@tabler/icons-react';
 import { capitalize } from '../utils'
 
@@ -39,14 +39,9 @@ export function Notify({
         return
     }
 
-    return (<Alert
-        variant="light"
-        color={clr[type]}
-        radius="md"
-        onClose={onClose}
-        withCloseButton
+        return (<Alert
+            variant="default"
         title={title || capitalize(type)}
-        icon={icon}
         {...rest}
     >
         {children}
