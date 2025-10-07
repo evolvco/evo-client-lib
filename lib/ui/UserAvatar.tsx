@@ -38,7 +38,7 @@ export function UserAvatar({ user, className = 'size-8' }: { user: ModelRecord, 
                 Object.keys(res.records[0]).forEach((key)=>{
                     rec[toCamelCase(key)] = res.records[0][key as keyof typeof res.records[0]]
                 })
-                console.log('---- rec',rec)
+                //console.log('---- rec',rec)
                 setConfig(rec)
             }else{
                 setConfig(genConfig(user.email as string) as any)

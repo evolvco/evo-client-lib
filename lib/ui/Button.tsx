@@ -23,7 +23,10 @@ export function Button({
   if (dispatch) {
     const _click = onClick;
     onClick = (...args: any[]) => {
-      _dispatch(dispatch, null);
+      let dis = (typeof dispatch === 'string') ? [dispatch] : dispatch;
+      dis.forEach((d: string) => {
+          _dispatch(d, null);
+      });
       if (_click) {
         _click(...args);
       }
@@ -63,6 +66,5 @@ function ButtonUI({
   if(variant === 'danger') {
     _variant = 'destructive';
   }
-  console.log(3333, _variant);
   return <_Button {...(props as any)} variant={_variant}>{children}</_Button>;
 }

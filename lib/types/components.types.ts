@@ -11,6 +11,17 @@ export interface ChildrenProps {
     children: ReactNode
 }
 
+export interface DialogProps {
+    title?: string;
+    description?: string;
+    children: React.ReactNode;
+    open?: boolean;
+    onToggle?: string;
+    setOpen?: (open: boolean) => void;
+    trigger?: React.ReactNode;
+    showFooter?: boolean;
+  }
+
 export interface ContainerProps {
     children: ReactNode;
     style?: React.CSSProperties;
@@ -31,7 +42,8 @@ export interface ModelDetailProps {
     children?: React.ReactNode;
     style?: React.CSSProperties;
     meta: any;
-    on: string;
+    on?: string;
+    recId?: string;
     value?: string;
     populate?: string;
 }
@@ -103,7 +115,7 @@ export interface ModelFormProps {
     children?: React.ReactNode;
     style?: React.CSSProperties;
     meta: any;
-    id?: string;
+    recId?: string;
     action?: string;
     onSelect?: string;
     dispatchUpdate?: string;

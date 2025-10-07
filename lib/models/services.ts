@@ -12,7 +12,7 @@ export async function builder({ collection, id = '', method, path, query, body, 
       }
     }
     if (body) {
-      console.log("--postbody", body)
+      //console.log("--postbody", body)
       options.body = JSON.stringify(body)
     }
     const response = await fetch(url, options)
@@ -224,7 +224,7 @@ export async function findPageRecords(collection: string, where: Record<string, 
       }
     })
   }
-  console.log("-----where", where)
+  //console.log("-----where", where)
   let query: ManyQuery = { skip: startRow, limit: endRow - startRow }
   if (sort) {
     query.sort = sort
@@ -232,7 +232,7 @@ export async function findPageRecords(collection: string, where: Record<string, 
   if (Object.keys(where).length) {
     query.where = where
   }
-  console.log("-----query", query)
+  //console.log("-----query", query)
   const response = await find(collection, query)
   return response
 }

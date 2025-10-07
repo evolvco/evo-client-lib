@@ -11,7 +11,7 @@ export function ModelAttribute({
   tag = 'div',
   link,
 }: ModelAttributeProps): JSX.Element | null {
-  //console.log('----ctx1',attribute)
+  console.log('----ctx1',attribute)
   const ctx = useContext(DetailContext); // record, meta, values, setValues
   if (!ctx || !ctx.meta || !ctx.record) return null;
   let Tag = tag as keyof JSX.IntrinsicElements;

@@ -29,7 +29,7 @@ export function ModelForm({
   meta,
   action,
   onSelect,
-  id,
+  recId,
   dispatchUpdate,
   dispatchRemove,
   dispatchCreate,
@@ -142,7 +142,9 @@ export function ModelForm({
   }
 
   useEffect(() => {
-    return _on(onSelect!, async (value: any) => {
+    console.log('---- onSelect', onSelect)
+    if(!onSelect) return;
+    return _on(onSelect, async (value: any) => {
       if (!value) {
         setRecord({});
         return;
@@ -156,9 +158,10 @@ export function ModelForm({
   }, []);
 
   useEffect(() => {
-    if (id) {
+    console.log('---- id', recId)
+    if (recId) {
         setLoading(true);
-        findById(meta.name, id).then((record: ModelRecord) => {
+        findById(meta.name, recId).then((record: ModelRecord) => {
           setRecord(record);
           setLoading(false);
         }).catch((error: any) => {
@@ -166,19 +169,19 @@ export function ModelForm({
           setLoading(false);
         });
     }
-  }, [id]);
+  }, [recId, meta]);
 
   useEffect(() => {
     if (action === 'create') {
+      console.log('---- action', action)
       setRecord({});
     }
   }, [action]);
-
+  console.log('---- fails', record, metaModels, loading)
   if (loading) return <Loader />;
   if (!record || !metaModels) return null;
 
   const fails = isInValid({ values, fields });
-
   return (
     <form className={className} style={style}>
       <FormContext.Provider
@@ -205,7 +208,6 @@ export function ModelForm({
             {success}
           </Alert>
         )}
-
         {children}
       </FormContext.Provider>
     </form>

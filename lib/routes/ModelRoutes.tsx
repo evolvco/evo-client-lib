@@ -5,7 +5,7 @@ import { useModel } from '../models';
  import { ModelRoutesProps } from '@lib/types';
 
 export function ModelRoutes({ query }: ModelRoutesProps) {
-  console.log('------ModelRoutes query', query)
+  //console.log('------ModelRoutes query', query)
   let p:any = { model: 'sys_route' }
   if(query) {
     p.query = query
@@ -15,7 +15,7 @@ export function ModelRoutes({ query }: ModelRoutesProps) {
   if (loading || !recordSet) {
       return <Loader />
   }
-  console.log('------ModelRoutes recordSet', recordSet?.records.length);
+  //console.log('------ModelRoutes recordSet', recordSet?.records.length);
   return (
       <Routes>
           {recordSet.records.map((route: any) => {

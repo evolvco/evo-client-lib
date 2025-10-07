@@ -111,7 +111,7 @@ export function FieldsEditor({
   }
 
   const ordered = orderFields({ meta, fields: fields as Field[], action });
-  //console.log('---ordered', ordered)
+  console.log('---ordered', ordered, meta, fields, action)
   return (
     <div style={style} className={`flex flex-col overflow-auto ${className}`}>
       {ordered.map((att: Field) => {

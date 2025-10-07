@@ -10,8 +10,8 @@ export function ModelFormFields({
 }: ModelFormFieldsProps): JSX.Element | null {
   const meta = useMeta();
   const ctx = useContext(FormContext); // record, meta, values, setValues
-
   if (!ctx || !ctx.meta || !ctx.record) return null;
+  console.log('---- ctx', ctx)
 
   return (
     <FieldsEditor
@@ -23,7 +23,7 @@ export function ModelFormFields({
       }
       fields={ctx.fields}
       meta={ctx.meta}
-      metaModels={meta.metaModels}
+      metaModels={ctx.metaModels}
       id={ctx.record.id}
     />
   );

@@ -198,10 +198,11 @@ export function orderFields({
   let map: Dict<Field> = {};
 
   fields.forEach((fld) => {
-    if(!fld.field || !fld.name) {
-      return;
+    if(fld.field) {
+      map[fld.field] = fld;
+    }else if(fld.name) {
+      map[fld.name!] = fld;
     }
-    map[fld.field || fld.name] = fld;
   });
   //console.log('--orderFields', fields, map, meta)
   let fldOrder: string[] | undefined;
@@ -212,10 +213,10 @@ export function orderFields({
   ) {
     fldOrder = meta.actions[action as keyof typeof meta.actions].order;
   }
-
-  if (!fldOrder && meta.order && meta.order.length) {
+  if (!fldOrder?.length && meta.order?.length) {
     fldOrder = meta.order;
   }
+  console.log('---- fldOrder', fldOrder, fields)
 
   if (fldOrder) {
     return fldOrder

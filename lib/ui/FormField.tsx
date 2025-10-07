@@ -146,8 +146,9 @@ export function FormField({
     }
 
     if (att.enum && att.enum.length) {
-      params.onChange = (ev: any) =>
-        onChange(decodeURIComponent(ev.target.value));
+      params.onChange = (v: any) =>{
+        onChange(decodeURIComponent(v));
+      }
       params.value = encodeURIComponent(value);
       return (
         <Select {...params}>
@@ -163,7 +164,6 @@ export function FormField({
     if (att._ui_?.editor === 'time') {
       params.type = 'time';
     }
-
     return <Input {...params} />;
   }
 

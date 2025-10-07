@@ -20,6 +20,7 @@ export function Input({
   style,
   placeholder,
   clearable,
+  disabled,
   search,
   autocomplete,
   onChange,
@@ -28,6 +29,7 @@ export function Input({
 }: InputProps) {
   let input = (
     <InputUI
+      disabled={disabled}
       required={required}
       style={style}
       value={value}

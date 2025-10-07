@@ -105,6 +105,8 @@ export function ModelForm(props: ModelFormProps): JSX.Element;
 export function ModelFormFields(props: ModelFormFieldsProps): JSX.Element;
 export function AppSidebar(props: AppSidebarProps): JSX.Element;
 export function ListFilter(props: ListFilterProps): JSX.Element;
+export function ThemeToggle(): JSX.Element;
+export function Dialog(props: DialogProps): JSX.Element;
 //services
 export function pulse(): Promise<any>;
 export function login(cred: AuthCredentials): Promise<any>;

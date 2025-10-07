@@ -63,11 +63,11 @@ export function Select({
             <div className="absolute right-0 top-0 bottom-0">
               <CircleX
                 className="cursor-pointer absolute right-9 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
-                onClick={onClear}
+                onClick={_onClear}
               />
             </div>
           )}
-          <SelectTrigger style={style} className={cn('w-full', size === 'sm' ? 'text-sm' : size === 'md' ? 'text-base' : 'text-lg')}>
+          <SelectTrigger style={style} className={cn('w-full', size === 'sm' ? 'p-1' : size === 'md' ? 'p-2' : 'p-4')}>
             <SelectValue placeholder={placeholder} />
           </SelectTrigger>
           <SelectContent>
