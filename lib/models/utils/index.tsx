@@ -66,7 +66,7 @@ export const types: FieldTypes = {
     formatters: [],
   },
   Boolean: {
-    empty: () => '',
+    empty: () => undefined,
     editors: ['Checkbox', 'Switch'],
     formatters: [],
   },
@@ -112,6 +112,7 @@ export function isInValid({
   let errors = fields
     .filter((fld) => {
       if (
+        fld.name!=='id' &&
         fld.required &&
         values[fld.name!] === types[fld.type].empty(fld.many)
       ) {
