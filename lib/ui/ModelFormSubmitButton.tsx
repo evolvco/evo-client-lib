@@ -36,8 +36,10 @@ export function ModelFormSubmitButton({
   }
 
   if (!ctx.values?.id && action === 'create') {
-    return (
+    return (<div className="flex flex-row gap-2">
+    {ctx.meta.draft_support && ctx.fails.length > 0 && <Button onClick={ctx.handleCreate} className={className} style={style} {...props}>Save Draft</Button>}
       <Button
+        disabled={ctx.fails.length > 0}
         onClick={ctx.handleCreate}
         className={className}
         style={style}
@@ -45,12 +47,15 @@ export function ModelFormSubmitButton({
       >
         {children}
       </Button>
+      </div>
     );
   }
 
   if (ctx.values?.id && action === 'update') {
-    return (
+    return (<div className="flex flex-row gap-2">
+    {ctx.meta.draft_support && ctx.fails.length > 0 && <Button onClick={ctx.handleUpdate} className={className} style={style} {...props}>Save Draft</Button>}
       <Button
+        disabled={ctx.fails.length > 0}
         onClick={ctx.handleUpdate}
         className={className}
         style={style}
@@ -58,6 +63,7 @@ export function ModelFormSubmitButton({
       >
         {children}
       </Button>
+      </div>
     );
   }
 
