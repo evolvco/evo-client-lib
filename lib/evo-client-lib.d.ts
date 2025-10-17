@@ -8,7 +8,7 @@ import {
     ChildrenProps,
     UseModelParams,
     ModelContextType,
-    MetaModelContextType,
+    MetaContextType,
     SocketContextType,
     NotifyProps,
     RequireAuthProps,
@@ -38,7 +38,9 @@ import {
     WhereClause,
     ContainerProps,
     ModelFormProps,
-    ModelFormFieldsProps
+    ModelFormFieldsProps,
+    RoleContextType,
+    RoleProviderProps
 } from './types';
 
 import {
@@ -62,13 +64,15 @@ export function SocketProvider(props: ChildrenProps): JSX.Element;
 export function NotifyProvider(props: ChildrenProps): JSX.Element;
 export function EvoProvider(props: ChildrenProps): JSX.Element;
 export function MetaProvider(props: MetaProviderProps): JSX.Element;
+export function RoleProvider(props: RoleProviderProps): JSX.Element;
 export function RouteProvider(props: RouteProviderProps): JSX.Element;
 export function PrefProvider(props: PrefProviderProps): JSX.Element;
 export function ProtectedProvider(props: ProtectedProviderProps): JSX.Element;
 export function Toaster(): JSX.Element;
 //Hooks
-export function useMeta(params?: { onError?: Function }): MetaModelContextType;
+export function useMeta(params?: { onError?: Function }): MetaContextType;
 export function useAuth(): any;
+export function useRoles(): RoleContextType;
 export function useNotify(): any;
 export function fetchMeta(): any;
 export function useModel(params: UseModelParams): ModelContextType;

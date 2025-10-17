@@ -4,18 +4,21 @@ import { RouteProvider } from "@lib/routes";
 import { ProtectedProviderProps } from "@lib/types";
 import { useNavigate } from "react-router-dom";
 import { PrefProvider } from "@lib/components/hooks/PrefProvider";
+import { RolesProvider } from "@lib/auth/RolesProvider";
 
 export function ProtectedProvider({ children }: ProtectedProviderProps) {
     const navigate = useNavigate();
     return (<RequireAuth
-            onFailure={()=>navigate('/login')}
-        >
-            <MetaProvider>
+        onFailure={() => navigate('/login')}
+    >
+        <MetaProvider>
+            <RolesProvider>
                 <PrefProvider>
                     <RouteProvider>
                         {children}
                     </RouteProvider>
                 </PrefProvider>
-            </MetaProvider>
-        </RequireAuth>)
+            </RolesProvider>
+        </MetaProvider>
+    </RequireAuth>)
 }

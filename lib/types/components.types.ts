@@ -179,6 +179,17 @@ export interface MetaModelContextType {
     setMetaModels: (metaModels: any[]) => void;
 }
 
+export interface RoleContextType {
+    roles: ModelRecord[];
+    loadRoles: () => void;
+    loadingRoles: boolean;
+    setRoles: (roles: ModelRecord[]) => void;
+}
+
+export interface RoleProviderProps {
+    children: ReactNode;
+}
+
 export interface ModelContextType {
     recordSet?: RecordSet
     loading: boolean
