@@ -43,6 +43,8 @@ import {
     RoleProviderProps,
     TooltipProps,
     CardProps,
+    StoreParams,
+    DataTypes,
     ModelFormSubmitButtonProps
 } from './types';
 
@@ -117,6 +119,7 @@ export function ThemeToggle(): JSX.Element;
 export function Dialog(props: DialogProps): JSX.Element;
 export function Card(props: CardProps): JSX.Element;
 export function ModelFormSubmitButton(props: ModelFormSubmitButtonProps): JSX.Element;
+
 //services
 export function pulse(): Promise<any>;
 export function login(cred: AuthCredentials): Promise<any>;
@@ -139,7 +142,15 @@ export namespace utils {
 //Models
 export const ModelFactory: ModelFactoryType
 export const StoreFactory: StoreFactoryType
-export const DexieStore: DataStore
+export class DexieStore implements DataStore {
+    constructor(params: StoreParams): void;
+    name: string;
+    uri?: string;
+    db: any;
+    dataType: DataTypes;
+    connect(): Promise<void>;
+    disconnect(): Promise<void>;
+}
 export const metaSchema: Schema
 export function builder(params: BuilderParams): Promise<any>;
 export function find(collection: string, query?: ManyQuery): Promise<RecordSet>;

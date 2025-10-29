@@ -1,11 +1,9 @@
 import { ReactElement, ReactNode } from "react";
-import { Attributes, ManyQuery, Meta, ModelRecord, RecordSet } from "./models";
-import { NavItemType, ResizablePanelGroup } from "@lib/ui";
-import { ResizablePanel } from "@lib/ui/Resizable";
-import { ResizableHandle } from "@lib/ui";
-import { FormFieldBaseProps } from "./forms.types";
-
-export type { ToasterProps } from '@lib/ui/Toaster'
+import type { Attributes, ManyQuery, Meta, ModelRecord, FormFieldBaseProps, RecordSet } from "./";
+import type { PanelGroup as ResizablePanelGroup } from "react-resizable-panels";
+import type { Panel as ResizablePanel } from "react-resizable-panels";
+import type { PanelResizeHandle as ResizableHandle } from "react-resizable-panels";
+export type { ToasterProps } from 'sonner'
 
 export interface ChildrenProps {
     children: ReactNode
@@ -21,6 +19,26 @@ export interface DialogProps {
     trigger?: React.ReactNode;
     showFooter?: boolean;
   }
+
+export interface SidebarsMenuSectionNavProps {
+    items: NavItemType[];
+    className?: string;
+    style?: React.CSSProperties;
+}
+
+  export interface NavItemType {
+    id: string;
+    is_active?: boolean;
+    route?: {
+        path: string;
+        route_params?: string[];
+    };
+    parent?: NavItemType;
+    name: string;
+    icon?: string;
+    url?: string;
+    items?: NavItemType[];
+}
 
 export interface ContainerProps {
     children: ReactNode;

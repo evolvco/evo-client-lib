@@ -1,4 +1,4 @@
-import { FieldUI, FieldType, Meta } from "@lib/types";
+import { FieldUI, FieldType, Meta } from "./";
 
 export interface FormFieldBaseProps {
     name?: string;

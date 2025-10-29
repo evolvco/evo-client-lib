@@ -1,5 +1,3 @@
-import { DataStore } from "./StoreAdapter.types";
-import {Query} from "./QueryAdaper.types"
 import { ManyQuery } from "./query";
 import { SingleQuery } from "./query";
 import { Attributes, Meta } from "./meta";

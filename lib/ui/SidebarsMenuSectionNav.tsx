@@ -3,26 +3,9 @@ import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Icon } from "./Icon";
+import {  NavItemType } from "@lib/types";
+import { SidebarsMenuSectionNavProps } from "@lib/types";
 
-interface SidebarsMenuSectionNav {
-    items: NavItemType[];
-    className?: string;
-    style?: React.CSSProperties;
-}
-
-export interface NavItemType {
-    id: string;
-    is_active?: boolean;
-    route?: {
-        path: string;
-        route_params?: string[];
-    };
-    parent?: NavItemType;
-    name: string;
-    icon?: string;
-    url?: string;
-    items?: NavItemType[];
-}
 
 function resolvePath(item: any): string {
     if (item.route) {
@@ -63,7 +46,7 @@ function VO(items: NavItemType[]): NavItemType[] {
     return navItems;
 }
 
-export function SidebarsMenuSectionNav({ items, className, style }: SidebarsMenuSectionNav) {
+export function SidebarsMenuSectionNav({ items, className, style }: SidebarsMenuSectionNavProps) {
 
     const navItems = VO(items);
     const [activeItem, setActiveItem] = useState<string | null>(null);

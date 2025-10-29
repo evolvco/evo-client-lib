@@ -1,7 +1,7 @@
 import { SidebarFooter, Sidebar, SidebarRail, SidebarProvider, SidebarTrigger, SidebarInset, SidebarContent, SidebarGroup, SidebarHeader, SidebarGroupContent, SidebarGroupLabel, useSidebar } from "@lib/components/ui/sidebar";
-import { SidebarsMenuSectionNav, NavItemType } from "./SidebarsMenuSectionNav";
+import { SidebarsMenuSectionNav } from "./SidebarsMenuSectionNav";
 import { SidebarMenuCurrentUser } from "./SidebarMenuCurrentUser";
-import { AppSidebarProps } from "@lib/types";
+import { AppSidebarProps, NavItemType } from "@lib/types";
 
 export function AppSidebar({ children, header, side = 'left', variant = 'sidebar', footer, sectionNavItems = [] }: AppSidebarProps) {
     
