@@ -40,7 +40,8 @@ import {
     ModelFormProps,
     ModelFormFieldsProps,
     RoleContextType,
-    RoleProviderProps
+    RoleProviderProps,
+    TooltipProps
 } from './types';
 
 import {
@@ -89,6 +90,7 @@ export namespace toast {
 
 }
 //components
+export function Tooltip(props: TooltipProps): JSX.Element;
 export function Container(props: ContainerProps): JSX.Element;
 export function Toaster(props: ToasterProps): JSX.Element;
 export function LoginForm(props: LoginFormProps): JSX.Element;

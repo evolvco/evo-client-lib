@@ -28,6 +28,7 @@ export interface Meta {
   order?: Array<string>;
   mixins?: Array<Mixin>;
   dataStore?: DataStore;
+  draft_support?: boolean;
   database: string;
   sync?: string;
   view_own_records?: boolean;
@@ -69,10 +70,15 @@ export interface Actions {
 }
 
 export interface Action {
-  order: Array<string>;
-  tags_order: Array<string>;
-  tags_display: TagsDisplay;
-  populate: Array<string>;
+  order?: Array<string>;
+  tags_order?: Array<string>;
+  tags_display?: TagsDisplay;
+  invalid?:{
+    conditions?: {
+      [key: string]: any
+    }
+  };
+  populate?: Array<string>;
   service: Service;
   notify: NotifySchema;
   sort?: Array<string>;
@@ -108,6 +114,8 @@ export interface FieldUI {
   update_roles?: Array<string>;
   create_roles?: Array<string>;
   label?: string;
+  clearable?: boolean;
+  falsey_value?: 'false-value'|'empty-value';
   multiline?: boolean;
   readonly?: boolean;
   options?: Array<{
