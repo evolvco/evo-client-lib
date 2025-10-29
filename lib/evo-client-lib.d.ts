@@ -41,7 +41,9 @@ import {
     ModelFormFieldsProps,
     RoleContextType,
     RoleProviderProps,
-    TooltipProps
+    TooltipProps,
+    CardProps,
+    ModelFormSubmitButtonProps
 } from './types';
 
 import {
@@ -111,8 +113,10 @@ export function ModelForm(props: ModelFormProps): JSX.Element;
 export function ModelFormFields(props: ModelFormFieldsProps): JSX.Element;
 export function AppSidebar(props: AppSidebarProps): JSX.Element;
 export function ListFilter(props: ListFilterProps): JSX.Element;
-export function ThemeToggle(): JSX.Element;
+export function ThemeToggle(): JSX.Element; 
 export function Dialog(props: DialogProps): JSX.Element;
+export function Card(props: CardProps): JSX.Element;
+export function ModelFormSubmitButton(props: ModelFormSubmitButtonProps): JSX.Element;
 //services
 export function pulse(): Promise<any>;
 export function login(cred: AuthCredentials): Promise<any>;

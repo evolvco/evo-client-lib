@@ -162,6 +162,24 @@ export interface ModelAttributeProps {
     link?: string;
 }
 
+export interface CardProps {
+    title: string | React.ReactNode;
+    children: React.ReactNode;
+    className?: string;
+    style?: React.CSSProperties;
+    headerClassName?: string;
+    contentClassName?: string;
+    onClickPath?: string;
+  }
+
+export interface ModelFormSubmitButtonProps {
+    className?: string;
+    style?: React.CSSProperties;
+    children?: React.ReactNode;
+    action?: 'create' | 'update' | 'remove';
+    [key: string]: any;
+  }
+
 export interface ModelTemplateProps {
     className?: string;
     style?: React.CSSProperties;

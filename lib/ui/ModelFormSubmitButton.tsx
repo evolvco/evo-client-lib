@@ -1,14 +1,7 @@
 import React, { useContext } from 'react';
 import { Button, Confirm } from './';
 import { FormContext, FormContextType } from './ModelForm';
-
-interface ModelFormSubmitButtonProps {
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-  action?: 'create' | 'update' | 'remove';
-  [key: string]: any;
-}
+import { ModelFormSubmitButtonProps } from '@lib/types/components.types';
 
 export function ModelFormSubmitButton({
   className,
