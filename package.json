@@ -13,8 +13,8 @@
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "dist/evo-client-lib.cjs.js",
-  "types": "dist/evo-client-lib.d.ts",
+  "main": "./lib/main.ts",
+  "types": "./lib/main.ts",
   "directories": {
     "doc": "docs",
     "lib": "lib"
